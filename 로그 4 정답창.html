@@ -1,0 +1,41 @@
+<!doctype html><meta charset="utf-8"><title>정답 입력</title>
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:20px;background:#f7f8fa}
+  .w{max-width:820px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.06);padding:18px}
+  h1{margin:0 0 8px;font-size:20px}
+  .h{color:#555;margin:0 0 12px}
+  .row{display:flex;gap:8px}
+  input{flex:1;padding:10px 12px;font-size:18px;border:1px solid #cfd4dc;border-radius:10px}
+  button{padding:10px 14px;font-size:16px;border:0;border-radius:10px;background:#111;color:#fff;cursor:pointer}
+  .m{margin-top:10px;font-weight:600}
+  .err{color:#c00}
+  .v{display:none;margin-top:12px;border:1px solid #e6e8eb;border-radius:12px;padding:12px;background:#fbfdfb}
+  .v.show{display:block;animation:up .45s ease-out both}
+  .v p{margin:0 0 8px}
+  @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<div class="w">
+  <h1>정답을 입력하세요</h1>
+  <p class="h">띄어쓰기 없이 입력하세요.</p>
+  <div class="row">
+    <input id="i" autocomplete="off" autofocus>
+    <button onclick="c()">확인</button>
+  </div>
+  <div id="m" class="m"></div>
+  <div id="v" class="v">
+    <p>9&nbsp;&nbsp;&nbsp;참빛 곧 세상에 와서 각 사람에게 비취는 빛이 있었나니</p>
+    <p>10&nbsp;&nbsp;&nbsp;그가 세상에 계셨으며 세상은 그로 말미암아 지은바 되었으되 세상이 그를 알지 못하였고</p>
+    <p>11&nbsp;&nbsp;&nbsp;자기 땅에 오매 자기 백성이 영접지 아니하였으나</p>
+    <p>12&nbsp;&nbsp;&nbsp;영접하는 자 곧 그 이름을 믿는 자들에게는 하나님의 자녀가 되는 권세를 주셨으니</p>
+    <p>13&nbsp;&nbsp;&nbsp;이는 혈통으로나 육정으로나 사람의 뜻으로 나지 아니하고 오직 하나님께로서 난 자들이니라</p>
+  </div>
+</div>
+<script>
+  function c(){
+    var t=(i.value||'').trim();
+    var ok=(t==='하나님께로부터난자'); // exact, no spaces
+    m.className='m'+(ok?'':' err');
+    m.textContent= ok ? '정답입니다!' : '다시 시도하세요.';
+    v.className='v'+(ok?' show':'');
+  }
+</script>
